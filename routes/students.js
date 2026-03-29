@@ -1,6 +1,6 @@
 // routes/students.js
-const express = require("express");
-const Student = require("../models/student");
+const express = require('express');
+const Student = require('../models/student');
 
 const router = express.Router();
 
