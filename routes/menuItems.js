@@ -4,8 +4,8 @@ const MenuItem = require('../models/MenuItem');
 
 const router = express.Router();
 
-// POST /menu-items – create menu item 
-router.post('/menu-items', async (req, res) => {
+// POST / – create menu item 
+router.post('/', async (req, res) => {
     try {
         const menuItem = new MenuItem(req.body);
         const savedMenuItem = await menuItem.save();
@@ -16,8 +16,8 @@ router.post('/menu-items', async (req, res) => {
     }
 });
 
-// GET /menu-items – list all menu items 
-router.get('/menu-items', async (req, res) => {
+// GET / – list all menu items 
+router.get('/', async (req, res) => {
     try {
         const menuItems = await MenuItem.find().sort({ createdAt: -1 });
         res.json(menuItems);
@@ -28,8 +28,8 @@ router.get('/menu-items', async (req, res) => {
 });
 
 // 7.1 Search Menu Items 
-// GET /menu-items/search?name=...&category=... 
-router.get('menu-items/search', async (req, res) => {
+// GET /search?name=...&category=... 
+router.get('/search', async (req, res) => {
     try {
         const { name, category } = req.query;
         const filter = {};
